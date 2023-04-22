@@ -97,47 +97,76 @@ def result():
 
         top5recipes=recipe(prediction)
 
-        firstname = top5recipes.loc[0, 'name']
-        secondname = top5recipes.loc[1, 'name']
-        thirdname = top5recipes.loc[2, 'name']
-        fourthname = top5recipes.loc[3, 'name']
-        fifthname = top5recipes.loc[4, 'name']
-        firstrating = top5recipes.loc[0, 'rating']
-        secondrating = top5recipes.loc[1, 'rating']
-        thirdrating = top5recipes.loc[2, 'rating']
-        fourthrating = top5recipes.loc[3, 'rating']
-        fifthrating = top5recipes.loc[4, 'rating']
-        firstcount = top5recipes.loc[0, 'counts']
-        secondcount = top5recipes.loc[1, 'counts']
-        thirdcount = top5recipes.loc[2, 'counts']
-        fourthcount = top5recipes.loc[3, 'counts']
-        fifthcount = top5recipes.loc[4, 'counts']
-
-        if len(fifthname) > 0:
+        if len(top5recipes) == 5:
+            firstname = top5recipes.loc[0, 'name'].
+            secondname = top5recipes.loc[1, 'name']
+            thirdname = top5recipes.loc[2, 'name']
+            fourthname = top5recipes.loc[3, 'name']
+            fifthname = top5recipes.loc[4, 'name']
+            firstrating = top5recipes.loc[0, 'rating']
+            secondrating = top5recipes.loc[1, 'rating']
+            thirdrating = top5recipes.loc[2, 'rating']
+            fourthrating = top5recipes.loc[3, 'rating']
+            fifthrating = top5recipes.loc[4, 'rating']
+            firstcount = top5recipes.loc[0, 'counts']
+            secondcount = top5recipes.loc[1, 'counts']
+            thirdcount = top5recipes.loc[2, 'counts']
+            fourthcount = top5recipes.loc[3, 'counts']
+            fifthcount = top5recipes.loc[4, 'counts']
             return render_template("result.html", prediction=prediction, firstname=firstname, firstcount=firstcount,
                                    firstrating=firstrating, secondname=secondname, secondcount=secondcount,
                                    secondrating=secondrating, thirdname=thirdname, thirdcount=thirdcount,
                                    thirdrating=thirdrating, fourthcount=fourthcount, fourthname=fourthname,
                                    fourthrating=fourthrating, fifthname=fifthname, fifthrating=fifthrating,
                                    fifthcount=fifthcount)
-        elif len(fourthname) > 0:
+        elif len(top5recipes) == 4:
+            firstname = top5recipes.loc[0, 'name']
+            secondname = top5recipes.loc[1, 'name']
+            thirdname = top5recipes.loc[2, 'name']
+            fourthname = top5recipes.loc[3, 'name']
+            firstrating = top5recipes.loc[0, 'rating']
+            secondrating = top5recipes.loc[1, 'rating']
+            thirdrating = top5recipes.loc[2, 'rating']
+            fourthrating = top5recipes.loc[3, 'rating']
+            firstcount = top5recipes.loc[0, 'counts']
+            secondcount = top5recipes.loc[1, 'counts']
+            thirdcount = top5recipes.loc[2, 'counts']
+            fourthcount = top5recipes.loc[3, 'counts']
             return render_template("result4.html", prediction=prediction, firstname=firstname, firstcount=firstcount,
                                     firstrating=firstrating, secondname=secondname, secondcount=secondcount,
                                     secondrating=secondrating, thirdname=thirdname, thirdcount=thirdcount,
                                     thirdrating=thirdrating, fourthcount=fourthcount, fourthname=fourthname,
                                     fourthrating=fourthrating)
-        elif len(thirdname) > 0:
-                    return render_template("result3.html", prediction=prediction, firstname=firstname,
+        elif len(top5recipes) == 3:
+            firstname = top5recipes.loc[0, 'name']
+            secondname = top5recipes.loc[1, 'name']
+            thirdname = top5recipes.loc[2, 'name']
+            firstrating = top5recipes.loc[0, 'rating']
+            secondrating = top5recipes.loc[1, 'rating']
+            thirdrating = top5recipes.loc[2, 'rating']
+            firstcount = top5recipes.loc[0, 'counts']
+            secondcount = top5recipes.loc[1, 'counts']
+            thirdcount = top5recipes.loc[2, 'counts']
+            return render_template("result3.html", prediction=prediction, firstname=firstname,
                                     firstcount=firstcount, firstrating=firstrating, secondname=secondname,
                                     secondcount=secondcount, secondrating=secondrating, thirdname=thirdname,
                                     thirdcount=thirdcount, thirdrating=thirdrating)
-        elif len(secondname) > 0:
-                    return render_template("result2.html", prediction=prediction, firstname=firstname,
+        elif len(top5recipes) == 2:
+            firstname = top5recipes.loc[0, 'name']
+            secondname = top5recipes.loc[1, 'name']
+            firstrating = top5recipes.loc[0, 'rating']
+            secondrating = top5recipes.loc[1, 'rating']
+            firstcount = top5recipes.loc[0, 'counts']
+            secondcount = top5recipes.loc[1, 'counts']
+            return render_template("result2.html", prediction=prediction, firstname=firstname,
                                     firstcount=firstcount, firstrating=firstrating, secondname=secondname,
                                     secondcount=secondcount, secondrating=secondrating)
-        elif len(firstname) > 0:
-                     return render_template("result1.html", prediction=prediction, firstname=firstname,
-                                    firstcount=firstcount)
+        elif len(top5recipes) == 1:
+            firstname = top5recipes.loc[0, 'name']
+            firstrating = top5recipes.loc[0, 'rating']
+            firstcount = top5recipes.loc[0, 'counts']
+            return render_template("result1.html", prediction=prediction, firstname=firstname,
+                                    firstcount=firstcount, firstrating=firstrating)
         else:
             return render_template("resultnone.html")
 

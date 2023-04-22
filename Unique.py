@@ -113,8 +113,35 @@ def result():
         fourthcount = top5recipes.loc[3, 'counts']
         fifthcount = top5recipes.loc[4, 'counts']
 
+        if fifthname.notnull():
+            return render_template("result.html", prediction=prediction, firstname=firstname, firstcount=firstcount,
+                                   firstrating=firstrating, secondname=secondname, secondcount=secondcount,
+                                   secondrating=secondrating, thirdname=thirdname, thirdcount=thirdcount,
+                                   thirdrating=thirdrating, fourthcount=fourthcount, fourthname=fourthname,
+                                   fourthrating=fourthrating, fifthname=fifthname, fifthrating=fifthrating,
+                                   fifthcount=fifthcount)
+        elif fourthname.notnull():
+            return render_template("result4.html", prediction=prediction, firstname=firstname, firstcount=firstcount,
+                                    firstrating=firstrating, secondname=secondname, secondcount=secondcount,
+                                    secondrating=secondrating, thirdname=thirdname, thirdcount=thirdcount,
+                                    thirdrating=thirdrating, fourthcount=fourthcount, fourthname=fourthname,
+                                    fourthrating=fourthrating)
+        elif thirdname.notnull():
+                    return render_template("result3.html", prediction=prediction, firstname=firstname,
+                                    firstcount=firstcount, firstrating=firstrating, secondname=secondname,
+                                    secondcount=secondcount, secondrating=secondrating, thirdname=thirdname,
+                                    thirdcount=thirdcount, thirdrating=thirdrating)
+        elif secondname.notnull():
+                    return render_template("result2.html", prediction=prediction, firstname=firstname,
+                                    firstcount=firstcount, firstrating=firstrating, secondname=secondname,
+                                    secondcount=secondcount, secondrating=secondrating)
+        elif firstname.notnull():
+                     return render_template("result1.html", prediction=prediction, firstname=firstname,
+                                    firstcount=firstcount)
+        else:
+            return render_template("resultnone.html")
 
-        return render_template("result.html", prediction=prediction, firstname=firstname, firstcount=firstcount, firstrating=firstrating, secondname=secondname, secondcount=secondcount, secondrating=secondrating, thirdname=thirdname, thirdcount=thirdcount, thirdrating=thirdrating, fourthcount=fourthcount, fourthname=fourthname, fourthrating=fourthrating, fifthname=fifthname, fifthrating=fifthrating, fifthcount=fifthcount)
+
 
 if __name__ == "__main__":
     app.run(debug=True)

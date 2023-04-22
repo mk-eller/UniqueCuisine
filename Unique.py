@@ -98,7 +98,7 @@ def result():
         top5recipes=recipe(prediction)
 
         if len(top5recipes) == 5:
-            firstname = top5recipes.loc[0, 'name'].
+            firstname = top5recipes.loc[0, 'name']
             secondname = top5recipes.loc[1, 'name']
             thirdname = top5recipes.loc[2, 'name']
             fourthname = top5recipes.loc[3, 'name']

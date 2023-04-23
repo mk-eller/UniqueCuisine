@@ -22,6 +22,9 @@ x = data.ingredients
 y = data.tags
 x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.3, random_state = 42)
 
+#This model is pulled directly from my Jupyter Notebook: Model Building and Evaluation Final. It is
+#the one I decided was my best.
+
 dtc = Pipeline([('vect', CountVectorizer()),
  ('tfidf', TfidfTransformer()),
  ('clf', DecisionTreeClassifier())
@@ -30,6 +33,8 @@ dtc.set_params(clf__random_state=42,
               clf__max_features=600)
 dtc.fit(x_train, y_train)
 y_pred4 = dtc.predict(x_test)
+
+#Pickling my model to use in my prediction function on Unique.py
 
 pickle.dump(dtc, open('model.pkl','wb'))
 
